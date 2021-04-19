@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/home_styles.css">
+    <title>Document</title>
+    <style>
+            body{
+
+            background-repeat: cover;
+            background-image: url('/images/image3.jpg');
+
+            }
+            .container{
+            border: 1px solid rgb(167, 162, 162);
+            border-radius: 5px;
+            justify-content: center;
+            display: block;
+            border-radius: 8px;
+            padding:30px;
+            background-color: rgba(19, 214, 214, 0.3);
+            width: 600px;
+            height: 580px;
+
+            }
+            #main{
+            display: flex;
+            justify-content: center;
+            display: block;
+            border-radius: 8px;
+            padding:25px;
+            background-color: rgba(254, 255, 255, 0.3);
+            width: 540px;
+            height: 400px;
+            font-family: Consolas;
+            font-size: 16px;
+            text-align: center;
+            }
+            #welcome{
+            text-align: center;
+            font-family:Freestyle Script;
+            font-size: 35px;
+            color: white;
+            }
+
+            h1{
+            text-align: center;
+            color: rgb(54, 35, 35);
+            font-family: Kristen ITC;
+            font-size: 52px;
+            }
+            #link{
+            font-family: Bell MT;
+            font-size: 18px;
+            }
+            #messages{
+            text-align: center;
+            font-family:Bell MT;
+            font-size: 15px;
+            color: rgb(26, 24, 24); 
+            }
+            #post{
+            text-align: center;
+            font-family:Freestyle Script;
+            font-size: 25px;
+            color: rgb(252, 247, 245) 
+
+            }
+            .likes{
+            position: relative;
+            border-radius: 5px;
+            padding: 2px;
+            padding-left: 50px;
+            display: flex;
+            justify-content: center;
+
+            }
+            input{
+            width: 50px;
+            border: none;
+            background: none;
+            color: #0e0e0d;
+            font-size: 30 px;
+            margin: 0 10px;
+            pointer-events: none;
+
+            }
+            button{
+            color:rgb(17, 16, 16);
+            background-color: rgb(189, 168, 168);
+            border: 1px solid black;
+            font-size: 30px;
+            padding: 5 10 px;
+            margin: 1px 0;
+            margin-left: 20px;
+            border-radius: 5px;
+            cursor: pointer
+            }
+
+            button:activate{
+            color: rgba(22, 22, 87, 0.933);
+            transform: scale(1.1);
+            }
+            p{
+                font-family: Freestyle Script;
+                font-size: 20px;
+
+            }
+
+
+                
+
+</style>
+</head>
+<body>
+    <h1>Hey Lets Message!</h1>
+    <div class = "container">
+        <div id ="welcome">
+            <h2>Welcome to the site</h2>
+            <h3>the messaging site</h3>
+            <h4><u>make an account, login, post a message, log out</u></h4>
+        </div>
+        <div id = "main">
+                <div id ="link">
+                <hr>
+                    <a href="/createUser">Create an account</a> | 
+                    <a href="/login">Login</a> | 
+                    <a href="/message">Post a message</a> | 
+                    <a href="/logout">Logout</a> 
+                <hr>
+                </div>
+
+                <div id ="messages">
+                <u>(Messages will show here)</u>
+                <br></br>
+                
+                <% for (let message of locals.messages) { %> 
+                    <div id ="post">
+                        <ol>
+                            <%= message.dataValues.content %>
+                        </ol> 
+
+                        <div class ="likes">
+                                <button id="likebtn">
+                                    <b><p>like</p></b>
+                                    </button>
+                                
+                                <input type = "number" id ="input1" value="0" name="">
+                                
+                                <button id="dislikebtn">
+                                    <b><p>dislike</p></b>
+                                    </button>
+                                
+                                <input type = "number" id ="input2" value="0" name="">
+                        </div>   
+                    </div> 
+        
+                            <% } %>
+                </div>
+        </div>
+    </div>
+
+    <script>
+
+let likebtn = document.querySelector("#likebtn")
+let dislikebtn = document.querySelector("#dislikebtn")
+
+let input1 = document.querySelector("#input1")
+let input2 = document.querySelector("#input2")
+
+likebtn.addEventListener('click',()=>{
+input1.value =parseInt(input1.value) + 1;
+input1.style.color ="green"
+})
+
+dislikebtn.addEventListener('click',()=>{
+input2.value =parseInt(input2.value) + 1;
+input2.style.color ="red"
+})
+
+
+        /*
+        let message = document.getElementById("my_mess")
+        //let paragraph = document.CreateElement("p")
+
+        let mark = function(){
+            message.style.TextDecoration="line-through";
+        }
+        message.addEventListener("click", mark);
+
+      
+
+        const likeBtn = document.querySelector(".like_btn")
+        const likeIcon =  document.querySelector("#icon")
+        const count = document.querySelector("#count")
+
+          //Button Clicked
+         
+        
+        let clicked = false;
+        
+        likeBtn.addEventListener("click",()=>{
+            //console.log("hello")
+            if(!clicked){
+                clicked =true;
+                LikeIcon.innerHTML=''
+                count.textContent++;
+
+            }else{
+                clicked =false;
+                LikeIcon.innerHTML =''
+                count.textContent++;
+            }
+        })*/
+
+    
+    </script>
+
+
+</body>
+</html>
